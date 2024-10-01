@@ -3,16 +3,16 @@
 public class Game
 {
     public int Turn = 0;
-    public char Player = 'X';
+    private const char  Player = 'X';
 
-    private static readonly char[,] Board =
+    public char[,] Board =
     {
         { '1', '2', '3' },
         { '4', '5', '6' },
         { '7', '8', '9' }
     };
 
-    public static void PrintBoard()
+    public void PrintBoard()
     {
         Console.WriteLine("==========");
         Console.WriteLine($" {Board[0, 0]} | {Board[0, 1]} | {Board[0, 2]} ");
@@ -31,7 +31,7 @@ public class Game
         }
     }
 
-    public static void PlayerMove(int position)
+    public void PlayerMove(int position)
     {
         if (position == 1)
         {
@@ -41,6 +41,7 @@ public class Game
     
     public int BotTurn()
     {
+        
         return new Random().Next(1, 9);
     }
 }

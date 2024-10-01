@@ -9,12 +9,13 @@ public class GameTests
     public void PrintBoard_WhenGameStarts_ShouldPrintEmptyBoard()
     {
         // Arrange
+        var game = new Game();
         const string expectedOutput = "==========\r\n 1 | 2 | 3 \r\n---+---+---\r\n 4 | 5 | 6 \r\n---+---+---\r\n 7 | 8 | 9 \r\n==========\r\n";
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
 
         // Act
-        Game.PrintBoard();
+        game.PrintBoard();
 
         // Assert
         var output = stringWriter.ToString();
@@ -25,20 +26,20 @@ public class GameTests
     public void PlayGame_WhenPlayerOnePicksNrOne_BoardShouldPrintXOnNrOne()
     {
         //Arrange
+        var game = new Game();
         const string expectedOutput = "==========\r\n X | 2 | 3 \r\n---+---+---\r\n 4 | 5 | 6 \r\n---+---+---\r\n 7 | 8 | 9 \r\n==========\r\n";
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
-        Game.PlayerMove(1);
+        game.PlayerMove(1);
         
         //Act
-        Game.PrintBoard();
+        game.PrintBoard();
 
         
         //Assert
         var output = stringWriter.ToString();
         output.Should().Be(expectedOutput);
     }
-    
     
     [Fact]
     public void PlayGame_WhenBotTurn_ShouldPickBetweenOneAndNine()
@@ -49,10 +50,31 @@ public class GameTests
         //Act
         var botTurn = game.BotTurn();
 
-
         //Assert
         botTurn.Should().BeInRange(1, 9);
 
+    }
+    
+    //This is not a good way to test this but i dont know how to test random in a good way   
+    [Fact]
+    public void PlayGame_WhenBotTurn_ShouldNotPickTakenNumber()
+    {
+        //Arrange
+        var game = new Game
+        {
+            Board = new char[,]
+            {
+                { 'X', 'X', 'O' },
+                { 'O', '5', 'O' },
+                { 'O', 'X', 'X' }
+            }
+        };
+
+        //Act
+        var botTurn = game.BotTurn();
+
+        //Assert
+        botTurn.Should().Be(5);
     }
     
     [Fact]

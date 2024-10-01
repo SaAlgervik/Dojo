@@ -1,3 +1,4 @@
 ﻿using TicTac;
 
-Game.PrintBoard();
+var newGame = new Game();
+newGame.PrintBoard();
