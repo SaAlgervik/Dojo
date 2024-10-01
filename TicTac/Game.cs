@@ -41,6 +41,6 @@ public class Game
     
     public int BotTurn()
     {
-        return -1;
+        return new Random().Next(1, 9);
     }
 }
