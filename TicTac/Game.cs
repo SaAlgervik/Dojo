@@ -3,7 +3,7 @@
 public class Game
 {
     public int Turn = 0;
-    private const char  Player = 'X';
+    private const char Player = 'X';
     private const char Bot = 'O';
 
     public char[,] Board =
@@ -34,18 +34,20 @@ public class Game
 
     public bool PlayerMove(int position)
     {
-        if (position == 1)
-        {
-            Board[0, 0] = 'X';
-        }
+        var row = (position - 1) / 3;
+        var col = (position - 1) % 3;
+
+        if (Board[row, col] == 'X' || Board[row, col] == 'O') return false;
+
+        Board[col, row] = 'X';
 
         return true;
     }
-    
+
     public int BotMove()
     {
         int botPosition;
-        
+
         while (true)
         {
             botPosition = new Random().Next(1, 10);
@@ -53,7 +55,7 @@ public class Game
             var col = (botPosition - 1) % 3;
 
             if (Board[row, col] == 'X' || Board[row, col] == 'O') continue;
-            
+
             Board[row, col] = Bot;
             break;
         }
