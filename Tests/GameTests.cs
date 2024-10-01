@@ -55,7 +55,7 @@ public class GameTests
 
     }
     
-    //This is not a good way to test this but i dont know how to test random in a good way   
+    //This is not a good way to test this, but I don't know how to test random in a good way with the time box we have  
     [Fact]
     public void PlayGame_WhenBotTurn_ShouldNotPickTakenNumber()
     {

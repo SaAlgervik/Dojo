@@ -4,6 +4,7 @@ public class Game
 {
     public int Turn = 0;
     private const char  Player = 'X';
+    private const char Bot = 'O';
 
     public char[,] Board =
     {
@@ -41,7 +42,20 @@ public class Game
     
     public int BotTurn()
     {
+        int botPosition;
         
-        return new Random().Next(1, 9);
+        while (true)
+        {
+            botPosition = new Random().Next(1, 10);
+            var row = (botPosition - 1) / 3;
+            var col = (botPosition - 1) % 3;
+
+            if (Board[row, col] == 'X' || Board[row, col] == 'O') continue;
+            
+            Board[row, col] = Bot;
+            break;
+        }
+
+        return botPosition;
     }
 }
