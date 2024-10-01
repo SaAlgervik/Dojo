@@ -38,4 +38,9 @@ public class Game
             Board[0, 0] = 'X';
         }
     }
+    
+    public int BotTurn()
+    {
+        return -1;
+    }
 }

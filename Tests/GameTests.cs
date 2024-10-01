@@ -44,12 +44,14 @@ public class GameTests
     public void PlayGame_WhenBotTurn_ShouldPickBetweenOneAndNine()
     {
         //Arrange
-  
+        var game = new Game();
         
         //Act
+        var botTurn = game.BotTurn();
 
-        
+
         //Assert
+        botTurn.Should().BeInRange(1, 9);
 
     }
     
