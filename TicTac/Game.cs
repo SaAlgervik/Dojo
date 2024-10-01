@@ -39,7 +39,7 @@ public class Game
 
         if (Board[row, col] == 'X' || Board[row, col] == 'O') return false;
 
-        Board[col, row] = 'X';
+        Board[col, row] = Player;
 
         return true;
     }
