@@ -48,7 +48,7 @@ public class GameTests
         var game = new Game();
         
         //Act
-        var botTurn = game.BotTurn();
+        var botTurn = game.BotMove();
 
         //Assert
         botTurn.Should().BeInRange(1, 9);
@@ -71,11 +71,33 @@ public class GameTests
         };
 
         //Act
-        var botTurn = game.BotTurn();
+        var botTurn = game.BotMove();
 
         //Assert
         botTurn.Should().Be(5);
     }
+    
+    [Fact]
+    public void PlayGame_WhenPlayerTurn_ShouldNotPickTakenNumber()
+    {
+        //Arrange
+        var game = new Game
+        {
+            Board = new char[,]
+            {
+                { 'X', '2', '3' },
+                { 'O', '5', '6' },
+                { 'O', 'X', 'X' }
+            }
+        };
+
+        //Act
+        var playerCanMove = game.PlayerMove(1);
+
+        //Assert
+        playerCanMove.Should().BeFalse();
+    }
+
     
     [Fact]
     public void PlayGame_WhenPlayed_ShouldRunNineRounds()

@@ -32,15 +32,17 @@ public class Game
         }
     }
 
-    public void PlayerMove(int position)
+    public bool PlayerMove(int position)
     {
         if (position == 1)
         {
             Board[0, 0] = 'X';
         }
+
+        return true;
     }
     
-    public int BotTurn()
+    public int BotMove()
     {
         int botPosition;
         
