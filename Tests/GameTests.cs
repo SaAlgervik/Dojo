@@ -62,7 +62,7 @@ public class GameTests
         //Arrange
         var game = new Game
         {
-            Board = new char[,]
+            Board = new[,]
             {
                 { 'X', 'X', 'O' },
                 { 'O', '5', 'O' },
@@ -83,7 +83,7 @@ public class GameTests
         //Arrange
         var game = new Game
         {
-            Board = new char[,]
+            Board = new[,]
             {
                 { 'X', '2', '3' },
                 { 'O', '5', '6' },

@@ -2,7 +2,7 @@
 
 public class Game
 {
-    public int Turn = 0;
+    public int Turn;
     private const char Player = 'X';
     private const char Bot = 'O';
 
